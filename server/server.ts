@@ -1,17 +1,13 @@
 import { Hono } from "hono";
-import { serveStatic } from "@hono/node-server/serve-static";
 import { serve } from "@hono/node-server";
+import { serveStatic } from "@hono/node-server/serve-static";
 
 const app = new Hono();
 
-app.get("/", async (c) => {
+app.get("/api", async (c) => {
   return c.json({ hello: "world" });
 });
 
-const port = 3000;
-serve({ fetch: app.fetch, port }, () => {
-  console.log(`Server kører på http://localhost:${port}`);
-});
+serve(app);
 
-// Serve static files fra dist mappen (frontend build)
-app.use("*", serveStatic({ root: "../dist" }));
+app.get("*", serveStatic({ root: "../dist" }));
