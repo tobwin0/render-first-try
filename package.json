@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "download-cli": "^1.1.1",
+    "ol": "^10.8.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "vite": "^7.3.1"
